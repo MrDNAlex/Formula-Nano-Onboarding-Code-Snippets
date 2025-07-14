@@ -44,22 +44,21 @@ print(pixel.call("123-456-7890"))  # Output: "Calling 123-456-7890 from Android.
 print(pixel.text("123-456-7890", "Hello!"))  # Output: "Sending text to 123-456-7890 from Android: Hello!"
 print(pixel.browse("www.example.com"))  # Output: "Browsing www.example.com on Google Pixel."
 
+print("\n")
 
 # Polymorphism Example
-
 class Animal(ABC):
-    @abstractmethod
     def speak(self) -> str:
-        pass
+        return "Animal sound"
     
-    @abstractmethod
     def eat(self, food: str) -> str:
-       pass
+        return f"Animal is eating {food}."
    
-    @abstractmethod
     def sleep(self) -> str:
-        pass
-    
+        return "Animal is sleeping."
+
+# Dog and Cat classes INHERIT from Animal Interface
+# They implement the abstract methods defined in Animal
 class Dog(Animal):
     def speak(self) -> str:
         return "Woof! Woof!"
@@ -79,4 +78,20 @@ class Cat(Animal):
     
     def sleep(self) -> str:
         return "The cat is sleeping."
-    
+
+animal = Animal()  # This will raise an error since Animal is abstract
+dog = Dog() 
+cat = Cat()
+
+# Using polymorphism
+print(animal.speak()) # Output: "Animal sound"
+print(dog.speak())  # Output: "Woof! Woof!"
+print(cat.speak())  # Output: "Meow! Meow!"
+
+print(animal.eat("food"))  # Output: "Animal is eating food."
+print(dog.eat("bone"))  # Output: "The dog is eating bone."
+print(cat.eat("fish"))  # Output: "The cat is eating fish."
+
+print(animal.sleep())  # Output: "Animal is sleeping."
+print(dog.sleep())  # Output: "The dog is sleeping."
+print(cat.sleep())  # Output: "The cat is sleeping."
